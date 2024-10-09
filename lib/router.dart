@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ibc_app/view/home_screen.dart';
 import 'package:ibc_app/widgets/slash_screen.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey =
@@ -9,25 +10,19 @@ final GlobalKey<NavigatorState> shellNavigatorKey =
 
 final router = GoRouter(
   navigatorKey: rootNavigatorKey,
-  initialLocation: '/slash-screen',
+  initialLocation: '/splash-screen',
   routes: [
     GoRoute(
-      path: '/slash-screen',
-      builder: (BuildContext _, GoRouterState state) {
-        return const SlashScreen();
+      path: '/splash-screen',
+      builder: (BuildContext context, GoRouterState state) {
+        return const SplashScreen();
       },
     ),
-
-    // ShellRoute(
-    //   navigatorKey: shellNavigatorKey,
-    //   builder: (context, state, child) {
-    //     return ButtomNavigationBarScrenn(
-    //       child: child,
-    //     );
-    //   },
-    //   routes: [
-    //     // Displayed ShellRoute's Navigator.
-    //   ],
-    // ),
+    GoRoute(
+      path: '/home',
+      builder: (BuildContext context, GoRouterState state) {
+        return const HomeScreen();
+      },
+    ),
   ],
 );
